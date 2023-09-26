@@ -1,0 +1,80 @@
+CREATE TABLE `admin` (
+  `admin_id` int NOT NULL AUTO_INCREMENT,
+  `hostel` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `clean_request` (
+  `request_id` bigint NOT NULL AUTO_INCREMENT,
+  `clean_time` time DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `feedback_status` bit(1) NOT NULL,
+  `req_status` bit(1) NOT NULL,
+  `worker_id` bigint DEFAULT NULL,
+  `rollnumber` bigint DEFAULT NULL,
+  PRIMARY KEY (`request_id`),
+  KEY `FKxky19grk3hp68v0x9040l8u5` (`worker_id`),
+  KEY `FK47xo5vv6uu6wh6cauwq03f51k` (`rollnumber`),
+  CONSTRAINT `FK47xo5vv6uu6wh6cauwq03f51k` FOREIGN KEY (`rollnumber`) REFERENCES `student` (`rollnumber`),
+  CONSTRAINT `FKxky19grk3hp68v0x9040l8u5` FOREIGN KEY (`worker_id`) REFERENCES `house_keeper` (`worker_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `feedback` (
+  `feedback_id` bigint NOT NULL AUTO_INCREMENT,
+  `feedback` varchar(3000) DEFAULT NULL,
+  `request_id` bigint DEFAULT NULL,
+  `rollnumber` bigint DEFAULT NULL,
+  PRIMARY KEY (`feedback_id`),
+  KEY `FK96upbmjce91hbagr6030dy3ny` (`request_id`),
+  KEY `FK2257spm361ysobt3ecj8d5vry` (`rollnumber`),
+  CONSTRAINT `FK2257spm361ysobt3ecj8d5vry` FOREIGN KEY (`rollnumber`) REFERENCES `student` (`rollnumber`),
+  CONSTRAINT `FK96upbmjce91hbagr6030dy3ny` FOREIGN KEY (`request_id`) REFERENCES `clean_request` (`request_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `house_keeper` (
+  `worker_id` bigint NOT NULL AUTO_INCREMENT,
+  `floor` int NOT NULL,
+  `hostel` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`worker_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `house_keeper_clean_request` (
+  `house_keeper_worker_id` bigint NOT NULL,
+  `clean_request_request_id` bigint NOT NULL,
+  UNIQUE KEY `UK_1n6vojoehkdtyjv83s8dnxq7k` (`clean_request_request_id`),
+  KEY `FKqwlwg0ajk2o2k3ax08e5s46q0` (`house_keeper_worker_id`),
+  CONSTRAINT `FK91f88p8su5tmg5xtvhj6w9raf` FOREIGN KEY (`clean_request_request_id`) REFERENCES `clean_request` (`request_id`),
+  CONSTRAINT `FKqwlwg0ajk2o2k3ax08e5s46q0` FOREIGN KEY (`house_keeper_worker_id`) REFERENCES `house_keeper` (`worker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `student` (
+  `rollnumber` bigint NOT NULL,
+  `floor` int NOT NULL,
+  `hostel` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `room` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`rollnumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `student_feedbacks` (
+  `student_rollnumber` bigint NOT NULL,
+  `feedbacks_feedback_id` bigint NOT NULL,
+  UNIQUE KEY `UK_15n8bqv74yl6qxgydsdm4qqc4` (`feedbacks_feedback_id`),
+  KEY `FK38mnbkh71cjo61gys1qv7wqnq` (`student_rollnumber`),
+  CONSTRAINT `FK38mnbkh71cjo61gys1qv7wqnq` FOREIGN KEY (`student_rollnumber`) REFERENCES `student` (`rollnumber`),
+  CONSTRAINT `FKqdqml27lj91p1wv2p95ng0qe1` FOREIGN KEY (`feedbacks_feedback_id`) REFERENCES `feedback` (`feedback_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `student_request_id` (
+  `student_rollnumber` bigint NOT NULL,
+  `request_id_request_id` bigint NOT NULL,
+  UNIQUE KEY `UK_r6pe5foggf3m17k3j42jkfsme` (`request_id_request_id`),
+  KEY `FK7285iya4qx0wpmseovo9d80qw` (`student_rollnumber`),
+  CONSTRAINT `FK7285iya4qx0wpmseovo9d80qw` FOREIGN KEY (`student_rollnumber`) REFERENCES `student` (`rollnumber`),
+  CONSTRAINT `FKq38lcc3ks35qosnmdlk5igmhw` FOREIGN KEY (`request_id_request_id`) REFERENCES `clean_request` (`request_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
