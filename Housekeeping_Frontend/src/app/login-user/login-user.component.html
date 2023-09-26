@@ -1,0 +1,22 @@
+<div class="">
+    <img  src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-tutor-housekeeping-background-template-image_159641.jpg" style="height: 750px;">
+    <div class="loginDiv">
+       <div class="text-center text-black"><h2 style="margin-top: 20px;">USER LOGIN</h2> </div>
+       <br>
+       <div class="formDiv">
+        <form #form="ngForm" (ngSubmit)="checkUser(form.value)">
+            <label for="EmailInput" class="text-black">Roll Number</label>
+            <input  type="email" ngModel id="EmailInput" name="rollnumber" class="form-control" required/>
+            <br>
+            <label for="PasswordInput" class="text-black">Password</label>
+            <input  type="password" ngModel name="password" id="PasswordInput" class="form-control" required/>
+            <br><br>
+           <div class="text-center d-grid gap-2"> <button class="btn btn-primary loginButton"><strong>Login </strong></button> </div>
+           <p class="user"><a class="link-opacity-100" href="Adminlogin">Admin Login</a></p>
+        </form>
+           <!-- <div  class="text-center"><label><a href="" style="text-decoration: none;">Don't have an Account</a></label></div> -->
+             <div class="text-center mt-3" ><strong style="color: red;"> {{notMatch}} </strong></div> 
+     </div>
+    </div>
+</div>
+

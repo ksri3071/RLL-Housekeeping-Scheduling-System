@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<br><br>
+
+<div class="container" >
+    <label class="text-muted ms-5 mt-3"><strong>Allot Housekeeper</strong></label>
+    <br><br>
+    <form class="row g-3" #form="ngForm" (ngSubmit)="allotHouseKeeper(form.value)">
+        <div class="col-md-2 ms-5">
+          <label class="form-label text-muted">Request Id</label>
+          <input type="text" name="cleanRequestId" value="{{requestId}}" class="form-control" style="border: 3px solid black;"  readonly>
+        </div>
+        <div class="col-md-2 ms-5">
+          <label  class="form-label text-muted">Room No</label>
+          <input type="text" value="{{cleanRequestData.student.room}}" class="form-control" style="border: 3px solid black;"  readonly>
+        </div>
+        <div class="col-md-2 ms-5">
+            <label  class="form-label text-muted">Time Requested</label>
+            <input type="text" value="{{cleanRequestData.cleanTime}}" class="form-control" style="border: 3px solid black;" readonly>
+          </div>
+          <div class="col-7 ms-5">
+            <label for="inputPassword4" class="form-label text-muted">Housekeeper</label>
+            <select class="form-control" ngModel name="houseKeeperId" >
+              <option style=" border: 5px solid #99ccff;" value="{{data.worker_id}}" *ngFor="let data of houseKeeper"> {{data.name}} </option>
+            </select>
+          </div>
+          <div class="col-12 ms-5">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
+</div>

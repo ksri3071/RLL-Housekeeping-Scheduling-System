@@ -1,0 +1,34 @@
+
+<body><app-navbar></app-navbar>
+
+<div style="margin-left:200px;background: none;margin-top: 0.3%;" class="scrollspy-example bg-body-tertiary p-3 rounded-2">
+ <label><strong>Housekeeping </strong></label> 
+ <table  class="table customTable" style=" border: 5px solid #99ccff;">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col">HOUSEKEEPER</th>
+        <th scope="col">ROOM</th>
+        <th scope="col">DATE</th>
+        <th scope="col">TIME REQUESTED</th>
+        <th scope="col">STATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of AllClientRequestData">
+        <th scope="row" *ngIf="data.req_status===false">
+          <button routerLink="/admin/allot/{{data.request_id}}/{{AdminDetails.hostel}}" class="btn btn-primary" style="width:49px; font-size: 10px;">Allot</button>
+        </th>
+        <td scope="row" *ngIf="data.req_status===true">
+          {{data.worker.name}}
+        </td>
+          <td> {{data.student.room}} </td>  
+        <td> {{data.date}} </td>
+        <td> {{data.cleanTime}} </td>
+        <td *ngIf="data.feedback_status===true" style="font-size: 15px; color: rgb(245, 3, 3);">Complete</td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+</body>

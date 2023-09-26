@@ -1,0 +1,19 @@
+
+<body><app-navbar></app-navbar>
+
+
+<div class="container">
+
+    <label class="text-muted ms-5 mt-3"><strong class="form-label text-black">Register Housekeeper</strong></label>
+    <br><br>
+    <form class="row g-3" #form="ngForm" (ngSubmit)="registerHousekeeper(form.value)">
+        
+          <label for="inputRoll" class="form-label text-black">Name</label>
+          <input type="text" ngModel class="form-control" id="inputRoll" name="name" placeholder="Enter the Housekeeper Name">
+            <label for="inputRoom" class="form-label text-black">Floor</label>
+            <input type="number" ngModel name="floor" class="form-control" id="inputRoom" placeholder="Enter floor number"><br>
+            <button class="btn btn-primary" style="width: 15%;">Register</button>
+          
+    </form>
+</div>
+</body>

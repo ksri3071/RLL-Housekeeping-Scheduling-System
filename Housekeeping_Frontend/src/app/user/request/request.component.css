@@ -1,0 +1,23 @@
+body{
+   background-color: #e6e6e6;
+}
+.container{
+    border: 5px solid #99ccff;
+    /*border-radius: 30px;*/
+    margin-left: 14%;
+    padding: 50px;
+    height: 40%;
+    width: 86%;
+    
+    /*background-image: url("https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_640.jpg");*/
+    background-color: white;
+    
+}
+input{
+    border: 3px solid black;
+    border-radius: 50px;
+    background-color: aliceblue;
+}
+label{
+    font-size: 20px;
+}

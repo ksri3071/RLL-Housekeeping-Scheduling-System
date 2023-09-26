@@ -1,0 +1,15 @@
+body{
+    background-color:#e6e6e6;
+    height: 100%;
+}
+.customTable thead tr th{
+
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+.customTable td{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}

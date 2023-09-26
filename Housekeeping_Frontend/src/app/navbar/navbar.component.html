@@ -1,0 +1,29 @@
+<!-- The side navbar -->
+
+<div class="sidenav">
+
+  <br><br>
+    <h3 style="font-family: Arial, Helvetica, sans-serif;margin-left: 35px;font-weight:bold;line-height: normal">Hostel name</h3>
+    <strong class="ms-5">{{AdminDetails.hostel}} </strong>
+    <br><br>
+    <button  routerLinkActive="active" routerLink="/admin/home"> Dashboard</button><br>
+    <button   routerLinkActive="active" routerLink="/admin/allot" >Allot housekeeper</button><br>
+    <button   routerLinkActive="active" routerLink="/admin/feedback/{{AdminDetails.hostel}}">Feedback</button><br>
+    <button   routerLinkActive="active" routerLink="/admin/registerStudent/{{AdminDetails.hostel}}"> Register Student</button><br>
+    <button   routerLinkActive="active" routerLink="/admin/registerHousekeeper/{{AdminDetails.hostel}}"> Register Housekeeper</button><br>
+    <button  (click)="logout()" > Logout</button>
+</div>
+
+<div>
+  
+  <img class="dashboardImage" src="https://img.freepik.com/free-photo/fantastic-seascape-with-ripples_1232-424.jpg">
+  
+     
+    
+ </div>
+
+
+ 
+
+
+

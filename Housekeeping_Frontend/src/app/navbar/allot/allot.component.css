@@ -1,0 +1,36 @@
+body{
+    background-color:#e6e6e6;
+    height: 100%;
+}
+.customSelect{
+    width: 200px;
+    margin-left: 85px;
+    display: flex;
+    
+}
+label{
+   
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-weight: bolder;
+    
+}
+input{
+    border: 5px solid #99ccff;;
+    border-radius: 20px;
+   
+
+}
+.container{
+    
+  
+    width: 80%;
+    margin-left: 17%;
+    height: 40%;
+    border: 5px solid black;
+   /* border-radius: 50px;*/
+    /*background-color: aliceblue;*/
+    /*background-image: url('https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_640.jpg');*/
+   
+}
+
